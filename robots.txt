@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://octopus-sev.ru/sitemap.xml

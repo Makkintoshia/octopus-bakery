@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Octopus — кофейня и пекарня в Севастополе</title>
+<meta name="description" content="Octopus (Октопус) — уютная кофейня и пекарня в Севастополе. Авторский кофе с собой, свежая выпечка, десерты. ул. Тараса Шевченко, 49 к2.">
+<meta name="keywords" content="кофейня Севастополь, пекарня Севастополь, Octopus, Октопус, кофе с собой, выпечка, круассаны">
+<meta name="author" content="Octopus Local Bakery">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Octopus — кофейня и пекарня в Севастополе">
+<meta property="og:description" content="Авторский кофе с собой, свежая выпечка прямо из печи и тёплая атмосфера. Заходи за вкусными моментами.">
+<meta property="og:image" content="images/photo_02.jpg">
+<meta property="og:url" content="https://octopus-sev.ru">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="Octopus Bakery">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Octopus — кофейня и пекарня в Севастополе">
+<meta name="twitter:description" content="Авторский кофе с собой, свежая выпечка прямо из печи.">
+<meta name="twitter:image" content="images/photo_02.jpg">
+
+<!-- Favicon -->
+<link rel="icon" type="image/jpeg" href="images/photo_04.jpg">
+<link rel="apple-touch-icon" href="images/photo_04.jpg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#3d2b1f;
+    --deep:#2e1d12;
+    --teal:#6b4a32;
+    --coral:#c8973a;
+    --sand:#efe1c8;
+    --cream:#faf4e8;
+    --gold:#d9a441;
+    --muted:#8a7563;
+    --line:rgba(61,43,31,.12);
+    --shadow:0 18px 50px rgba(46,29,18,.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Manrope',system-ui,sans-serif;
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  img{max-width:100%;display:block}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1180px;margin:0 auto;padding:0 24px}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 30px;border-radius:50px;font-weight:700;
+    font-size:16px;cursor:pointer;border:none;transition:.25s;
+    letter-spacing:.2px;
+  }
+  .btn-primary{background:var(--coral);color:#fff;box-shadow:0 12px 30px rgba(200,151,58,.4)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(200,151,58,.55)}
+  .btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6)}
+  .btn-ghost:hover{background:#fff;color:var(--deep)}
+  .eyebrow{
+    text-transform:uppercase;letter-spacing:3px;font-size:13px;
+    font-weight:700;color:var(--coral);margin-bottom:14px;
+  }
+  section{padding:100px 0}
+  h2{
+    font-size:clamp(30px,4.5vw,48px);font-weight:800;
+    line-height:1.15;margin-bottom:20px;color:var(--deep);
+  }
+
+  /* ===== NAV ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    transition:.3s;padding:18px 0;
+  }
+  header.scrolled{background:rgba(250,244,232,.95);backdrop-filter:blur(12px);box-shadow:0 4px 24px rgba(0,0,0,.06);padding:12px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .logo{display:flex;align-items:center;gap:10px;font-family:'Pacifico',cursive;font-size:26px;color:#fff;transition:.3s}
+  .logo img{width:38px;height:38px;border-radius:10px;object-fit:cover}
+  header.scrolled .logo{color:var(--deep)}
+  .logo span{font-size:30px}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{color:#fff;font-weight:600;font-size:15px;transition:.3s;position:relative}
+  header.scrolled .nav-links a{color:var(--ink)}
+  .nav-links a:hover{color:var(--coral)}
+  .nav-cta{padding:10px 22px!important;font-size:14px}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+  .burger span{width:26px;height:3px;background:#fff;border-radius:3px;transition:.3s}
+  header.scrolled .burger span{background:var(--ink)}
+
+  /* ===== HERO ===== */
+  .hero{
+    min-height:100vh;display:flex;align-items:center;
+    position:relative;overflow:hidden;
+    background:linear-gradient(135deg,#2e1d12 0%,#4a3220 55%,#2e1d12 100%);
+    color:#fff;padding:120px 0 80px;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;opacity:.08;
+    background-image:radial-gradient(circle at 20% 30%,#fff 2px,transparent 2px),
+                     radial-gradient(circle at 70% 60%,#fff 1.5px,transparent 1.5px);
+    background-size:60px 60px,90px 90px;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center;position:relative;z-index:2}
+  .hero h1{
+    font-size:clamp(42px,6.5vw,82px);font-weight:800;line-height:1.05;
+    margin-bottom:24px;
+  }
+  .hero h1 .accent{color:var(--gold);font-family:'Pacifico',cursive;font-weight:400;display:block;font-size:.65em;margin-top:4px}
+  .hero p.lead{font-size:19px;opacity:.92;max-width:520px;margin-bottom:36px}
+  .hero-buttons{display:flex;gap:16px;flex-wrap:wrap}
+  .hero-stats{display:flex;gap:40px;margin-top:54px;flex-wrap:wrap}
+  .hero-stats .stat strong{display:block;font-size:34px;font-weight:800;color:var(--gold)}
+  .hero-stats .stat span{font-size:14px;opacity:.8}
+
+  .octopus-card{
+    position:relative;display:flex;justify-content:center;align-items:center;
+  }
+  .octopus-svg{width:min(440px,90%);filter:drop-shadow(0 30px 60px rgba(0,0,0,.35));animation:float 6s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-18px) rotate(2deg)}}
+  .steam-cup{position:absolute;bottom:-10px;right:0;background:var(--cream);border-radius:0 0 60px 60px;width:140px;height:120px;box-shadow:var(--shadow)}
+
+  /* ===== MARQUEE ===== */
+  .marquee{background:var(--coral);color:#fff;padding:18px 0;overflow:hidden;white-space:nowrap}
+  .marquee-track{display:inline-flex;gap:50px;animation:scroll 22s linear infinite;font-weight:700;font-size:18px;letter-spacing:1px}
+  .marquee-track span{display:inline-flex;align-items:center;gap:50px}
+  .marquee-track span::after{content:"☕";margin-left:50px}
+  @keyframes scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+  /* ===== ABOUT ===== */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .about-visual{
+    border-radius:30px;overflow:hidden;position:relative;
+    aspect-ratio:4/5;box-shadow:var(--shadow);
+  }
+  .about-visual img{width:100%;height:100%;object-fit:cover}
+  .about-visual::before{
+    content:"";position:absolute;inset:0;z-index:1;
+    background:linear-gradient(to top,rgba(46,29,18,.5),transparent 55%);
+  }
+  .about-visual .badge{
+    position:absolute;top:24px;left:24px;background:#fff;color:var(--deep);
+    padding:10px 18px;border-radius:50px;font-weight:700;font-size:14px;
+    display:flex;align-items:center;gap:8px;z-index:2;
+  }
+  .about-visual .caption{
+    position:absolute;bottom:24px;left:24px;right:24px;z-index:2;color:#fff;
+  }
+  .about-visual .caption strong{display:block;font-size:22px;margin-bottom:2px}
+  .about-visual .caption span{font-size:14px;opacity:.9}
+  .about-text p{color:var(--muted);font-size:17px;margin-bottom:18px}
+  .features{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:30px}
+  .feature{display:flex;gap:14px;align-items:flex-start}
+  .feature .ic{font-size:26px;background:var(--sand);width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .feature h4{font-size:16px;margin-bottom:2px}
+  .feature p{font-size:14px;margin:0;color:var(--muted)}
+
+  /* ===== MENU ===== */
+  #menu{background:var(--sand)}
+  .menu-head{text-align:center;max-width:680px;margin:0 auto 60px}
+  .menu-tabs{display:flex;justify-content:center;gap:10px;margin-bottom:50px;flex-wrap:wrap}
+  .tab{padding:10px 24px;border-radius:50px;border:2px solid var(--line);background:#fff;cursor:pointer;font-weight:600;font-size:15px;transition:.25s;color:var(--ink)}
+  .tab.active{background:var(--deep);color:#fff;border-color:var(--deep)}
+  .menu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .menu-card{
+    background:#fff;border-radius:22px;padding:30px;transition:.3s;
+    border:1px solid transparent;position:relative;overflow:hidden;
+  }
+  .menu-card:hover{transform:translateY(-8px);box-shadow:var(--shadow);border-color:var(--coral)}
+  .menu-card .emoji{font-size:54px;margin-bottom:16px}
+  .menu-card h3{font-size:20px;margin-bottom:6px;color:var(--deep)}
+  .menu-card .desc{color:var(--muted);font-size:14px;margin-bottom:18px;min-height:40px}
+  .menu-card .price{font-size:24px;font-weight:800;color:var(--coral)}
+  .menu-card .tag{position:absolute;top:18px;right:18px;background:var(--gold);color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:50px;text-transform:uppercase;letter-spacing:.5px}
+
+  /* ===== GALLERY ===== */
+  .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:50px}
+  .gallery-item{
+    aspect-ratio:1;border-radius:18px;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+    transition:.35s;cursor:pointer;position:relative;background:var(--sand);
+  }
+  .gallery-item.big{grid-column:span 2;grid-row:span 2;aspect-ratio:auto}
+  .gallery-item.wide{grid-column:span 2;aspect-ratio:2/1}
+  .gallery-item img{
+    width:100%;height:100%;object-fit:cover;transition:.5s;
+  }
+  .gallery-item::after{
+    content:"🔍";position:absolute;inset:0;display:flex;align-items:center;
+    justify-content:center;background:rgba(46,29,18,.55);color:#fff;
+    font-size:28px;opacity:0;transition:.3s;
+  }
+  .gallery-item:hover img{transform:scale(1.08)}
+  .gallery-item:hover::after{opacity:1}
+
+  /* ===== LIGHTBOX ===== */
+  .lightbox{
+    position:fixed;inset:0;background:rgba(46,29,18,.92);z-index:1000;
+    display:none;align-items:center;justify-content:center;padding:30px;
+    backdrop-filter:blur(8px);
+  }
+  .lightbox.open{display:flex;animation:fade .25s}
+  @keyframes fade{from{opacity:0}to{opacity:1}}
+  .lightbox img{max-width:90%;max-height:85vh;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+  .lightbox-close{position:absolute;top:24px;right:32px;color:#fff;font-size:48px;cursor:pointer;line-height:1;user-select:none;transition:.2s}
+  .lightbox-close:hover{color:var(--coral);transform:rotate(90deg)}
+  .lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);color:#fff;font-size:54px;cursor:pointer;user-select:none;padding:20px;transition:.2s}
+  .lightbox-nav:hover{color:var(--coral)}
+  .lightbox-nav.prev{left:10px}
+  .lightbox-nav.next{right:10px}
+  .lightbox-counter{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:#fff;font-size:15px;opacity:.8}
+
+  /* ===== REVIEWS ===== */
+  #reviews{background:var(--deep);color:#fff}
+  #reviews h2{color:#fff}
+  #reviews .eyebrow{color:var(--gold)}
+  .reviews-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:50px}
+  .review{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:30px;backdrop-filter:blur(10px)}
+  .stars{color:var(--gold);margin-bottom:14px;font-size:18px;letter-spacing:2px}
+  .review p{opacity:.9;margin-bottom:20px;font-size:15px}
+  .review-author{display:flex;align-items:center;gap:12px}
+  .review-author .avatar{width:44px;height:44px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px}
+  .review-author .name{font-weight:700;font-size:15px}
+  .review-author .meta{font-size:12px;opacity:.7}
+
+  /* ===== CONTACT ===== */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}
+  .contact-info .info-item{display:flex;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+  .contact-info .info-item .ic{font-size:24px;width:54px;height:54px;background:var(--sand);border-radius:16px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .contact-info .info-item h4{font-size:13px;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:4px}
+  .contact-info .info-item p{font-size:17px;font-weight:600;color:var(--deep)}
+  .contact-links{display:flex;gap:12px;margin-top:12px;flex-wrap:wrap}
+  .contact-link{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:50px;font-weight:600;font-size:14px;transition:.25s;border:1px solid var(--line);color:var(--deep);background:#fff}
+  .contact-link:hover{background:var(--coral);color:#fff;border-color:var(--coral)}
+  .map-wrap{border-radius:24px;overflow:hidden;box-shadow:var(--shadow);min-height:420px;background:var(--sand)}
+  .map-wrap iframe{width:100%;height:100%;min-height:420px;border:0}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--deep);color:#fff;padding:60px 0 30px}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:40px}
+  footer .logo{margin-bottom:18px}
+  footer p{opacity:.7;font-size:14px;margin-bottom:18px}
+  footer h4{font-size:15px;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:18px;color:var(--gold)}
+  footer ul{list-style:none}
+  footer ul li{margin-bottom:10px}
+  footer ul li a{opacity:.75;font-size:15px;transition:.25s}
+  footer ul li a:hover{opacity:1;color:var(--coral)}
+  .socials{display:flex;gap:12px;margin-top:18px}
+  .socials a{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;transition:.25s;font-size:18px}
+  .socials a:hover{background:var(--coral);transform:translateY(-3px)}
+  .footer-bottom{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;text-align:center;font-size:13px;opacity:.6}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:900px){
+    .hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+    .hero{padding:140px 0 60px;text-align:center}
+    .hero p.lead{margin-left:auto;margin-right:auto}
+    .hero-buttons,.hero-stats{justify-content:center}
+    .octopus-card{order:-1}
+    .menu-grid,.reviews-grid{grid-template-columns:1fr 1fr}
+    .gallery-grid{grid-template-columns:repeat(2,1fr)}
+    .gallery-item.big{grid-column:span 2;grid-row:span 1}
+    .gallery-item.wide{grid-column:span 2}
+    .footer-grid{grid-template-columns:1fr 1fr}
+    .nav-links{
+      position:fixed;top:0;right:-100%;height:100vh;width:75%;
+      background:var(--deep);flex-direction:column;justify-content:center;
+      transition:.35s;padding:40px;gap:24px;
+    }
+    .nav-links.open{right:0}
+    .nav-links a{color:#fff!important;font-size:20px}
+    .burger{display:flex;z-index:101}
+    .burger.active span:nth-child(1){transform:translateY(8px) rotate(45deg);background:#fff}
+    .burger.active span:nth-child(2){opacity:0}
+    .burger.active span:nth-child(3){transform:translateY(-8px) rotate(-45deg);background:#fff}
+    section{padding:70px 0}
+  }
+  @media(max-width:560px){
+    .menu-grid,.reviews-grid,.features,.footer-grid{grid-template-columns:1fr}
+    .hero-stats{gap:24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header id="header">
+  <div class="container nav">
+    <a href="#" class="logo"><img src="images/photo_04.jpg" alt="Octopus logo"> Octopus</a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#about">О нас</a>
+      <a href="#menu">Меню</a>
+      <a href="#gallery">Галерея</a>
+      <a href="#reviews">Отзывы</a>
+      <a href="#contact">Контакты</a>
+      <a href="tel:+79781656634" class="btn btn-primary nav-cta">📞 Позвонить</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow" style="color:var(--gold)">☕ Кофейня и пекарня · Севастополь</div>
+      <h1>Утро начинается<br>с ароматного кофе<span class="accent">Octopus</span></h1>
+      <p class="lead">Авторский кофе с собой, свежая выпечка прямо из печи и тёплая атмосфера в самом сердце города у моря. Заходи за вкусными моментами.</p>
+      <div class="hero-buttons">
+        <a href="#menu" class="btn btn-primary">Посмотреть меню 🍽</a>
+        <a href="#contact" class="btn btn-ghost">Как добраться</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><strong>5.0★</strong><span>222+ оценки</span></div>
+        <div class="stat"><strong>08:00</strong><span>открываемся утром</span></div>
+        <div class="stat"><strong>100%</strong><span>свежая выпечка</span></div>
+      </div>
+    </div>
+    <div class="octopus-card">
+      <svg class="octopus-svg" viewBox="0 0 300 320" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="body" cx="40%" cy="35%">
+            <stop offset="0%" stop-color="#e8c466"/>
+            <stop offset="60%" stop-color="#d9a441"/>
+            <stop offset="100%" stop-color="#a9761f"/>
+          </radialGradient>
+        </defs>
+        <!-- tentacles -->
+        <path d="M90,180 C40,220 30,270 70,290 C90,300 110,290 100,270 C95,255 80,255 85,240" fill="url(#body)"/>
+        <path d="M120,190 C80,250 90,300 130,300 C150,300 145,275 125,275 C115,275 115,265 130,255" fill="url(#body)"/>
+        <path d="M150,195 C140,260 160,310 180,295 C195,285 175,265 190,255 C200,248 195,235 180,240" fill="url(#body)"/>
+        <path d="M180,190 C200,250 240,275 230,295 C220,310 200,295 210,280 C218,268 205,255 195,250" fill="url(#body)"/>
+        <path d="M205,180 C250,210 270,250 250,275 C238,290 225,275 235,265 C245,255 235,245 225,245" fill="url(#body)"/>
+        <!-- head -->
+        <ellipse cx="150" cy="130" rx="85" ry="80" fill="url(#body)"/>
+        <!-- eyes -->
+        <circle cx="120" cy="120" r="16" fill="#fff"/>
+        <circle cx="180" cy="120" r="16" fill="#fff"/>
+        <circle cx="122" cy="124" r="8" fill="#2e1d12"/>
+        <circle cx="182" cy="124" r="8" fill="#2e1d12"/>
+        <circle cx="124" cy="122" r="3" fill="#fff"/>
+        <circle cx="184" cy="122" r="3" fill="#fff"/>
+        <!-- smile -->
+        <path d="M135,155 Q150,170 165,155" stroke="#2e1d12" stroke-width="3" fill="none" stroke-linecap="round"/>
+        <!-- cheeks -->
+        <circle cx="105" cy="150" r="10" fill="#fff0d6" opacity=".7"/>
+        <circle cx="195" cy="150" r="10" fill="#fff0d6" opacity=".7"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>Свежая выпечка</span><span>Авторский кофе</span><span>Кофе с собой</span><span>Десерты</span><span>Завтраки</span>
+    <span>Свежая выпечка</span><span>Авторский кофе</span><span>Кофе с собой</span><span>Десерты</span><span>Завтраки</span>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-visual">
+      <span class="badge">⚓ У моря</span>
+      <img src="images/photo_06.jpg" alt="Интерьер пекарни Octopus — витрина со свежей выпечкой" loading="lazy">
+      <div class="caption"><strong>Свежая выпечка каждый день</strong><span>Витрина с хлебом, круассанами и десертами</span></div>
+    </div>
+    <div class="about-text">
+      <div class="eyebrow">О кофейне</div>
+      <h2>Больше, чем просто кофе</h2>
+      <p><strong>Octopus Local Bakery</strong> — это пекарня, кофейня и кондитерская в Севастополе, где каждая чашка кофе готовится с любовью, а выпечка появляется свежей каждый день. Мы любим море и круассаны!</p>
+      <p>Здесь можно взять утренний кофе с собой или задержаться за чашкой капучино с тёплым круассаном. У нас есть уютная зона отдыха с качелями и игровая комната для детей. Наш символ — осьминог, ведь у нас всегда найдётся «щупальце», чтобы угостить тебя чем-то вкусным.</p>
+      <div class="features">
+        <div class="feature">
+          <div class="ic">🌱</div>
+          <div><h4>Свежее зерно</h4><p>Авторская обжарка</p></div>
+        </div>
+        <div class="feature">
+          <div class="ic">🥐</div>
+          <div><h4>Своя пекарня</h4><p>Печём каждое утро</p></div>
+        </div>
+        <div class="feature">
+          <div class="ic">♻️</div>
+          <div><h4>Кофе с собой</h4><p>Скидка за свою кружку</p></div>
+        </div>
+        <div class="feature">
+          <div class="ic">♿</div>
+          <div><h4>Доступность</h4><p>Пандус, вход для всех</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MENU (dynamic from JSON) ===== -->
+<section id="menu">
+  <div class="container">
+    <div class="menu-head">
+      <div class="eyebrow">Меню</div>
+      <h2>Что у нас вкусного</h2>
+      <p style="color:var(--muted);font-size:17px">От бодрящего эспрессо до хрустящего круассана — выбирай любимое.</p>
+    </div>
+
+    <div class="menu-tabs" id="menuTabs"></div>
+    <div class="menu-grid" id="menuGrid"></div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="container">
+    <div style="text-align:center">
+      <div class="eyebrow">Галерея</div>
+      <h2>Атмосфера Octopus</h2>
+      <p style="color:var(--muted);font-size:17px;max-width:600px;margin:0 auto">Загляните внутрь нашей пекарни — реальные фотографии. Нажмите на любое, чтобы увеличить.</p>
+    </div>
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item big" data-img="images/photo_02.jpg"><img src="images/photo_02.jpg" alt="Витрина пекарни Octopus" loading="lazy"></div>
+      <div class="gallery-item" data-img="images/photo_06.jpg"><img src="images/photo_06.jpg" alt="Стойка с выпечкой" loading="lazy"></div>
+      <div class="gallery-item" data-img="images/photo_08.jpg"><img src="images/photo_08.jpg" alt="Хлеб и десерты" loading="lazy"></div>
+      <div class="gallery-item" data-img="images/photo_05.jpg"><img src="images/photo_05.jpg" alt="Ассортимент выпечки" loading="lazy"></div>
+      <div class="gallery-item wide" data-img="images/photo_01.jpg"><img src="images/photo_01.jpg" alt="Вход в пекарню Octopus, ул. Тараса Шевченко 49" loading="lazy"></div>
+      <div class="gallery-item" data-img="images/photo_03.jpg"><img src="images/photo_03.jpg" alt="Фасад пекарни Octopus" loading="lazy"></div>
+      <div class="gallery-item" data-img="images/photo_09.jpg"><img src="images/photo_09.jpg" alt="Десерты Octopus" loading="lazy"></div>
+      <div class="gallery-item" data-img="images/photo_10.jpg"><img src="images/photo_10.jpg" alt="Кофейня Octopus" loading="lazy"></div>
+      <div class="gallery-item wide" data-img="images/photo_07.jpg"><img src="images/photo_07.jpg" alt="Интерьер кофейни" loading="lazy"></div>
+      <div class="gallery-item" data-img="images/photo_11.jpg"><img src="images/photo_11.jpg" alt="Меню и витрина Octopus" loading="lazy"></div>
+      <div class="gallery-item" data-img="images/photo_12.jpg"><img src="images/photo_12.jpg" alt="Свежая выпечка Octopus" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REVIEWS ===== -->
+<section id="reviews">
+  <div class="container">
+    <div style="text-align:center">
+      <div class="eyebrow">Отзывы</div>
+      <h2>Что говорят гости</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>«Кофейня-пекарня на уровне в нашем районе. Приятный интерьер, детский уголок, открытая кухня, ассортимент — всё это его преимущества и то, что цепляет с первого визита.»</p>
+        <div class="review-author"><div class="avatar">А</div><div><div class="name">Анна К.</div><div class="meta">Яндекс.Карты</div></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>«В пекарне есть уютная зона отдыха с качелями, где вы можете отдохнуть и насладиться едой. Кроме того, есть игровая комната для детей. Очень милое место!»</p>
+        <div class="review-author"><div class="avatar">М</div><div><div class="name">Михаил Д.</div><div class="meta">Яндекс.Карты</div></div></div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>«Вкусный кофе, выпечка свежая, разлетается как горячие пирожки. Есть место, чтобы побаловать себя чашечкой кофе и вкусными плюшками. Рекомендую!»</p>
+        <div class="review-author"><div class="avatar">Е</div><div><div class="name">Елена С.</div><div class="meta">Restaurant Guru</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:50px">
+      <div class="eyebrow">Контакты</div>
+      <h2>Заходи в гости</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="info-item">
+          <div class="ic">📍</div>
+          <div><h4>Адрес</h4><p>ул. Тараса Шевченко, 49 к2<br>Севастополь</p></div>
+        </div>
+        <div class="info-item">
+          <div class="ic">🕘</div>
+          <div><h4>Часы работы</h4><p>Пн–Вс: 08:00 — 20:00<br>Без выходных</p></div>
+        </div>
+        <div class="info-item">
+          <div class="ic">📞</div>
+          <div><h4>Телефон</h4><p><a href="tel:+79781656634">+7 (978) 165-66-34</a></p></div>
+        </div>
+        <div class="info-item">
+          <div class="ic">☕</div>
+          <div><h4>Формат</h4><p>Кофе с собой · Чай с собой<br>Пандус для маломобильных гостей</p></div>
+        </div>
+        <div class="contact-links">
+          <a href="https://yandex.ru/maps/org/octopus/231075747823/" target="_blank" rel="noopener" class="contact-link">📍 Яндекс.Карты</a>
+          <a href="https://2gis.ru/sevastopol/firm/70000001083808904" target="_blank" rel="noopener" class="contact-link">🗺 2ГИС</a>
+        </div>
+      </div>
+      <div class="map-wrap">
+        <iframe src="https://yandex.ru/map-widget/v1/?ll=33.461508%2C44.568639&z=17&pt=33.461508,44.568639,pm2rdm" title="Octopus на карте Севастополя" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightboxClose">&times;</span>
+  <span class="lightbox-nav prev" id="lightboxPrev">&#8249;</span>
+  <img id="lightboxImg" src="" alt="Просмотр фото">
+  <span class="lightbox-nav next" id="lightboxNext">&#8250;</span>
+  <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="#" class="logo"><img src="images/photo_04.jpg" alt="Octopus logo"> Octopus</a>
+        <p>Кофейня и пекарня в Севастополе. Свежая выпечка, авторский кофе и морская романтика каждый день.</p>
+        <div class="socials">
+          <a href="https://instagram.com/octopus_bakery" target="_blank" rel="noopener" aria-label="Instagram">📷</a>
+          <a href="https://vk.com/octopus_local_bakery" target="_blank" rel="noopener" aria-label="VK">🔷</a>
+          <a href="https://yandex.ru/maps/org/octopus/231075747823/" target="_blank" rel="noopener" aria-label="Яндекс.Карты">📍</a>
+        </div>
+      </div>
+      <div>
+        <h4>Меню</h4>
+        <ul>
+          <li><a href="#menu">Кофе</a></li>
+          <li><a href="#menu">Выпечка</a></li>
+          <li><a href="#menu">Десерты</a></li>
+          <li><a href="#menu">Напитки</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Кофейня</h4>
+        <ul>
+          <li><a href="#about">О нас</a></li>
+          <li><a href="#gallery">Галерея</a></li>
+          <li><a href="#reviews">Отзывы</a></li>
+          <li><a href="#contact">Контакты</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Контакты</h4>
+        <ul>
+          <li>📍 ул. Т. Шевченко, 49 к2</li>
+          <li>🕘 Ежедневно 08:00–20:00</li>
+          <li>📞 <a href="tel:+79781656634" style="opacity:.85">+7 (978) 165-66-34</a></li>
+          <li>🏙️ Севастополь, Крым</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © <span id="year"></span> Octopus Local Bakery — кофейня и пекарня, Севастополь. Сделано с ☕ и любовью.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===== MENU FROM JSON =====
+  (async function(){
+    const tabsEl = document.getElementById('menuTabs');
+    const gridEl = document.getElementById('menuGrid');
+    try {
+      const res = await fetch('menu.json');
+      const data = await res.json();
+      const menu = data.menu;
+
+      // Render tabs
+      let first = true;
+      menu.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = 'tab' + (first ? ' active' : '');
+        btn.dataset.cat = cat.category;
+        btn.textContent = cat.label;
+        tabsEl.appendChild(btn);
+        first = false;
+      });
+
+      // Render all cards
+      menu.forEach(cat => {
+        cat.items.forEach(item => {
+          const card = document.createElement('div');
+          card.className = 'menu-card';
+          card.dataset.cat = cat.category;
+          card.innerHTML =
+            (item.tag ? '<span class="tag">' + item.tag + '</span>' : '') +
+            '<div class="emoji">' + item.emoji + '</div>' +
+            '<h3>' + item.name + '</h3>' +
+            '<p class="desc">' + item.desc + '</p>' +
+            '<div class="price">' + item.price + ' ₽</div>';
+          gridEl.appendChild(card);
+        });
+      });
+
+      // Tab switching
+      const tabs = tabsEl.querySelectorAll('.tab');
+      const cards = gridEl.querySelectorAll('.menu-card');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          const cat = tab.dataset.cat;
+          tabs.forEach(t => t.classList.toggle('active', t === tab));
+          cards.forEach(c => {
+            c.style.display = c.dataset.cat === cat ? '' : 'none';
+          });
+        });
+      });
+    } catch(e) {
+      console.error('Не удалось загрузить меню:', e);
+      tabsEl.innerHTML = '<p style="color:var(--muted)">Меню временно недоступно</p>';
+    }
+  })();
+
+  // ===== HEADER SCROLL =====
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ===== BURGER =====
+  const burger = document.getElementById('burger');
+  const navLinks = document.getElementById('navLinks');
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('active');
+    navLinks.classList.toggle('open');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    burger.classList.remove('active');
+    navLinks.classList.remove('open');
+  }));
+
+  // ===== YEAR =====
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ===== LIGHTBOX =====
+  const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lightboxImg');
+  const lbClose = document.getElementById('lightboxClose');
+  const lbPrev = document.getElementById('lightboxPrev');
+  const lbNext = document.getElementById('lightboxNext');
+  const lbCounter = document.getElementById('lightboxCounter');
+  let currentIdx = 0;
+
+  function openLightbox(i){
+    currentIdx = i;
+    lbImg.src = galleryItems[i].dataset.img;
+    lbCounter.textContent = (i+1) + ' / ' + galleryItems.length;
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function show(idx){
+    currentIdx = (idx + galleryItems.length) % galleryItems.length;
+    lbImg.src = galleryItems[currentIdx].dataset.img;
+    lbCounter.textContent = (currentIdx+1) + ' / ' + galleryItems.length;
+  }
+  galleryItems.forEach((item, i) => item.addEventListener('click', () => openLightbox(i)));
+  lbClose.addEventListener('click', closeLightbox);
+  lbPrev.addEventListener('click', () => show(currentIdx-1));
+  lbNext.addEventListener('click', () => show(currentIdx+1));
+  lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') closeLightbox();
+    if(e.key === 'ArrowLeft') show(currentIdx-1);
+    if(e.key === 'ArrowRight') show(currentIdx+1);
+  });
+</script>
+
+</body>
+</html>
